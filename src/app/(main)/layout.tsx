@@ -1,13 +1,3 @@
-import React from "react";
+import { MainLayout } from "@/layouts";
 
-const layout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <>
-      <header>From header</header>
-      <main>{children}</main>
-      <footer>From footer</footer>
-    </>
-  );
-};
-
-export default layout;
+export default MainLayout;
