@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import React from "react";
 import "../styles/tailwind.css";
 
-// If loading a variable font, you don't need to specify the font weight
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
