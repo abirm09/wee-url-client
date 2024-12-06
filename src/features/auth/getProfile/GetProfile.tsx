@@ -6,16 +6,24 @@ import { useAppDispatch } from "@/redux/hooks";
 import { TApiSuccessResponse, TUser } from "@/types";
 import { useEffect } from "react";
 
-const GetProfile = () => {
+const GetProfile = ({ isAuthenticated }: { isAuthenticated: boolean }) => {
   const dispatch = useAppDispatch();
-  const { data, isSuccess, isLoading } = useProfileQuery({});
-  const userData = data as TApiSuccessResponse<TUser>;
+
+  // Only call useProfileQuery when the user is authenticated
+  const { data, isSuccess, isLoading } = useProfileQuery(
+    {},
+    { skip: !isAuthenticated }
+  );
+
   useEffect(() => {
-    if (isSuccess) {
+    // Dispatch actions only if the API call was successful
+    if (isSuccess && data) {
+      const userData = data as TApiSuccessResponse<TUser>;
       dispatch(setUser(userData.data));
     }
     dispatch(setIsUserLoading(isLoading));
-  }, [isSuccess, isLoading]);
+  }, [isSuccess, isLoading, data, dispatch]);
+
   return null;
 };
 
