@@ -1,3 +1,5 @@
+import GetProfile from "@/features/auth/getProfile/GetProfile";
+import { StoreProvider } from "@/Providers";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import React from "react";
@@ -9,7 +11,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Wee-Url | Home",
+  title: "WeeUrl | Home",
   description: "An url shortening app",
 };
 
@@ -19,8 +21,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={`${inter.className} antialiased`}>{children}</body>
-    </html>
+    <StoreProvider>
+      <html lang="en">
+        <body className={`${inter.className} antialiased`}>{children}</body>
+      </html>
+      <GetProfile />
+    </StoreProvider>
   );
 }
