@@ -39,7 +39,7 @@ const schema = yup.object().shape({
     ),
 });
 
-const LoginForm = ({ callBackPath }: { callBackPath: string }) => {
+const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
   const router = useRouter();
   const passwordElemRef = useRef<HTMLDivElement | null>(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -68,7 +68,7 @@ const LoginForm = ({ callBackPath }: { callBackPath: string }) => {
         setAuth({ user: user, isLoading: false, token: res.data.token })
       );
 
-      router.push(callBackPath);
+      router.push(callbackPath);
     } catch (err) {
       const error = err as TApiErrorResponse;
       setServerErrorMessages(error.data.errorMessages);

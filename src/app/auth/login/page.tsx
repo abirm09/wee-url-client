@@ -4,17 +4,10 @@ import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-const Page = async ({
-  searchParams,
-}: {
-  searchParams: { [key: string]: string | string[] | undefined };
-}) => {
+const Page = async () => {
   const cookieStore = await cookies();
   const authCookie = cookieStore.get("_wee_url");
-  const params = await searchParams;
-  const callBackPath = Array.isArray(params?.callback_path)
-    ? params?.callback_path![0] || "/"
-    : params?.callback_path || "/";
+  const callbackPath = "/"; //TODO: Implement callback url system
 
   if (authCookie) {
     redirect("/");
@@ -36,7 +29,7 @@ const Page = async ({
                   />
                 </Link>
               </div>
-              <LoginForm callBackPath={callBackPath} />
+              <LoginForm callbackPath={callbackPath} />
             </div>
           </div>
           <div className="col-span-2 md:col-span-1 m-3 rounded-lg p-3">
