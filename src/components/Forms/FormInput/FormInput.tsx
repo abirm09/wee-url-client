@@ -12,6 +12,7 @@ type TFormInput = {
 
 // Use React.forwardRef to forward the ref to the actual input element
 const FormInput = React.forwardRef<HTMLInputElement, TFormInput>(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ name, className, placeholder, defaultValue, value, ...rest }, ref) => {
     return (
       <div>
