@@ -1,29 +1,27 @@
 "use client";
 import { Input, WeeButton } from "@/components";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
-import { useLoginMutation } from "@/redux/features/auth/authApi";
-import { setAuth } from "@/redux/features/auth/authSlice";
-import { useAppDispatch } from "@/redux/hooks";
 import {
   TApiErrorMessage,
   TApiErrorResponse,
   TApiSuccessResponse,
-  TAuthUser,
 } from "@/types";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { jwtDecode } from "jwt-decode";
 import { Eye, EyeOff } from "lucide-react";
 import Link from "next/link";
 import { useRef, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 
+import { useSignUpMutation } from "@/redux/features/user/userApi";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 const passwordValidatorRegex =
   /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[@#$%&*]).{8,}$/;
 
 const schema = yup.object().shape({
+  fullName: yup.string().required("Name is required."),
   email: yup
     .string()
     .required("Email is required.")
@@ -39,7 +37,7 @@ const schema = yup.object().shape({
     ),
 });
 
-const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
+const SignUpForm = () => {
   const router = useRouter();
   const passwordElemRef = useRef<HTMLDivElement | null>(null);
   const [showPassword, setShowPassword] = useState(false);
@@ -54,21 +52,22 @@ const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
     resolver: yupResolver(schema),
   });
 
-  const dispatch = useAppDispatch();
-  const [login, { isLoading }] = useLoginMutation();
+  //   const dispatch = useAppDispatch();
+  const [signUp, { isLoading }] = useSignUpMutation();
 
   const onSubmit = handleSubmit(async (data) => {
     setServerErrorMessages([]);
     try {
-      const res = (await login(data).unwrap()) as TApiSuccessResponse<{
+      (await signUp(data).unwrap()) as TApiSuccessResponse<{
         token: string;
       }>;
-      const user = jwtDecode(res.data.token) as TAuthUser;
-      dispatch(
-        setAuth({ user: user, isLoading: false, token: res.data.token })
-      );
+      //   const user = jwtDecode(res.data.token) as TAuthUser;
+      //   dispatch(
+      //     setAuth({ user: user, isLoading: false, token: res.data.token })
+      //   );
 
-      router.push(callbackPath);
+      router.push("/auth/login");
+      toast.success("Registration success, login with your credentials!");
     } catch (err) {
       const error = err as TApiErrorResponse;
       setServerErrorMessages(error.data.errorMessages);
@@ -101,10 +100,25 @@ const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
         <form onSubmit={onSubmit} className="space-y-5 w-full mt-5">
           <div>
             <Input
+              {...register("fullName")}
+              placeholder="MD Abir Mahmud"
+              autoComplete="fullName"
+              id="Register-fullName-input"
+            />
+            {errors.fullName ? (
+              <>
+                <ErrorMessage className="ml-2">
+                  {errors.fullName.message}
+                </ErrorMessage>
+              </>
+            ) : null}
+          </div>
+          <div>
+            <Input
               {...register("email")}
               placeholder="Email"
               autoComplete="email"
-              id="login-email-input"
+              id="Register-email-input"
             />
             {errors.email ? (
               <>
@@ -122,7 +136,7 @@ const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
               <Input
                 {...register("password")}
                 type={`${showPassword ? "text" : "password"}`}
-                id="login-password-input"
+                id="Register-password-input"
                 placeholder="Password"
                 className="focus-visible:outline-0 outline-0 border-0 ring-0 shadow-none col-span-9 mt-[-1px]"
                 onFocus={handlePasswordFieldFocus}
@@ -149,14 +163,6 @@ const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
               </>
             ) : null}
           </div>
-          <div className="text-right">
-            <Link
-              href={`/auth/forget-password`}
-              className="underline text-primary hover:text-primary-subtle font-semibold"
-            >
-              Forget password
-            </Link>
-          </div>
           {serverErrorMessages ? (
             <>
               <ul className="list-disc">
@@ -176,18 +182,18 @@ const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
             className="w-full"
             loading={isLoading}
             loadingClassName="w-full"
-            loadingElement="Login..."
+            loadingElement="Register..."
           >
-            Login
+            Register
           </WeeButton>
         </form>
         <div className="flex gap-2 justify-center mt-5">
-          <p className="text-gray-700">Don&apos;t have an account yet?</p>
+          <p className="text-gray-700">Already have an account?</p>
           <Link
-            href={`/auth/signup`}
+            href={`/auth/login`}
             className="underline text-primary hover:text-primary-subtle font-semibold"
           >
-            Register now
+            Login now
           </Link>
         </div>
       </div>
@@ -195,4 +201,4 @@ const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
   );
 };
 
-export default LoginForm;
+export default SignUpForm;
