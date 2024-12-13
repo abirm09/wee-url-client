@@ -1,0 +1,50 @@
+[
+  {
+    "id": 1,
+    "acType": "Super admin",
+    "email": "superadmin@weeurl.abirmahmud.top",
+    "password": "Pass#123"
+  },
+  {
+    "id": 2,
+    "acType": "Admin",
+    "email": "admin@weeurl.abirmahmud.top",
+    "password": "Pass#123"
+  },
+  {
+    "id": 3,
+    "acType": "Free subscriber",
+    "email": "freeuser@weeurl.abirmahmud.top",
+    "password": "Pass#123"
+  },
+  {
+    "id": 4,
+    "acType": "Starter subscriber",
+    "email": "starteruser@weeurl.abirmahmud.top",
+    "password": "Pass#123"
+  },
+  {
+    "id": 5,
+    "acType": "Premium subscriber",
+    "email": "premiumuser@weeurl.abirmahmud.top",
+    "password": "Pass#123"
+  },
+  {
+    "id": 6,
+    "acType": "Business subscriber",
+    "email": "businessuser@weeurl.abirmahmud.top",
+    "password": "Pass#123"
+  },
+  {
+    "id": 7,
+    "acType": "Unregistered email",
+    "email": "unregisteredemail@weeurl.abirmahmud.top",
+    "password": "Pass#123"
+  },
+  {
+    "id": 8,
+    "acType": "Invalid password",
+    "email": "invalidpassword@weeurl.abirmahmud.top",
+    "password": "invalidpassword"
+  }
+]
