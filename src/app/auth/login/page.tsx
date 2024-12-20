@@ -36,7 +36,7 @@ const Page = async () => {
                     alt="WeeUrl brand logo"
                     width={300}
                     height={100}
-                    className="rounded-lg aspect-auto w-40 md:w-56"
+                    className="rounded-lg aspect-auto w-10 md:w-20"
                   />
                 </Link>
               </div>
