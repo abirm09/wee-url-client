@@ -3,5 +3,5 @@
 }
 
 .error-message {
-  @apply text-red-600 font-semibold text-sm pt-1
+  @apply text-red-600 font-semibold text-sm pt-1;
 }
