@@ -1,11 +1,12 @@
+import { Footer, Header } from "@/components/Shared";
 import React from "react";
 
 const MainLayout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <header>From header</header>
+      <Header />
       <main>{children}</main>
-      <footer>From footer</footer>
+      <Footer />
     </>
   );
 };
