@@ -1,11 +1,9 @@
-import { Container } from "@/components";
+import { Banner } from "@/features/main/home/components";
 
 const page = () => {
   return (
     <>
-      <Container>
-        <div id="about"></div>
-      </Container>
+      <Banner />
     </>
   );
 };
