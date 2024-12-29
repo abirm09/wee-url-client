@@ -19,12 +19,11 @@ const Footer = () => {
               className="rounded-md shadow-md w-auto h-auto"
             />
             <p className="text-sm">
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa,
-              porro dolorum deleniti debitis aliquid sed temporibus vel earum
-              ullam quas culpa recusandae. Nihil expedita nobis accusantium,
-              ducimus nisi repudiandae quidem.
+              WeeUrl is committed to providing a seamless and efficient URL
+              shortening experience. Simplify your links and track their
+              performance with ease.
             </p>
-            <address>Satkhira, Khulna, Bangladesh</address>
+            <address>Khulna, Bangladesh</address>
           </div>
           <div>
             <p className="font-bold text-lg">Quick links</p>
@@ -35,13 +34,11 @@ const Footer = () => {
                 { name: "Pricing", path: "/" },
                 { name: "Check Url", path: "/check-url" },
               ].map((item) => (
-                <Link
-                  href={`/${item.path}`}
-                  key={item.name}
-                  className="hover:underline"
-                >
-                  {item.name}
-                </Link>
+                <li key={item.name}>
+                  <Link href={`/${item.path}`} className="hover:underline">
+                    {item.name}
+                  </Link>
+                </li>
               ))}
             </ul>
           </div>
