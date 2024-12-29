@@ -16,7 +16,7 @@ const Footer = () => {
               alt="logo"
               width={200}
               height={100}
-              className="rounded-md shadow-md"
+              className="rounded-md shadow-md w-auto h-auto"
             />
             <p className="text-sm">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa,
@@ -52,7 +52,7 @@ const Footer = () => {
               alt="Stripe payment url"
               width={300}
               height={100}
-              className="rounded-md mt-3"
+              className="rounded-md mt-3 w-auto h-auto"
             />
           </div>
         </div>

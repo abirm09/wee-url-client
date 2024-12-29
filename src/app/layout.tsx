@@ -1,4 +1,5 @@
 import GetProfile from "@/features/auth/getProfile/GetProfile";
+import AOSInit from "@/lib/AOS/AOSInit";
 import { StoreProvider } from "@/Providers";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
@@ -29,6 +30,7 @@ export default async function RootLayout({
         <body className={`${inter.className} antialiased`}>{children}</body>
       </html>
       <GetProfile isAuthenticated={!!authCookie} />
+      <AOSInit />
     </StoreProvider>
   );
 }

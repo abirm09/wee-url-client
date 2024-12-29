@@ -1,9 +1,10 @@
-import { Banner } from "@/features/main/home/components";
+import { About, Banner } from "@/features/main/home/components";
 
 const page = () => {
   return (
     <>
       <Banner />
+      <About />
     </>
   );
 };
