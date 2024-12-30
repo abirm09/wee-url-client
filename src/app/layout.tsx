@@ -1,5 +1,7 @@
 import GetProfile from "@/features/auth/getProfile/GetProfile";
+import AOSInit from "@/lib/AOS/AOSInit";
 import { StoreProvider } from "@/Providers";
+import { GoogleTagManager } from "@next/third-parties/google";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
@@ -26,9 +28,11 @@ export default async function RootLayout({
   return (
     <StoreProvider>
       <html lang="en">
+        <GoogleTagManager gtmId="GTM-MG2LQR92" />
         <body className={`${inter.className} antialiased`}>{children}</body>
       </html>
       <GetProfile isAuthenticated={!!authCookie} />
+      <AOSInit />
     </StoreProvider>
   );
 }
