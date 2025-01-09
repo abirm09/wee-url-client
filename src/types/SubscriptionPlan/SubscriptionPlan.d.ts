@@ -70,13 +70,13 @@ type TSubscriptionPlan = {
   canSetPassword: boolean;
   isPublic: boolean;
   isActive: boolean;
+  billingPeriods: TBillingPeriod[];
   createdAt: string;
   updatedAt: string;
   subscriptions: TSubscription[];
 };
 
 export type {
-  TBillingPeriod,
   TBillingPeriod,
   TBillingType,
   TSubscriptionPlan,

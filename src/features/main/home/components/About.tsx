@@ -63,9 +63,14 @@ const About = () => {
         </div>
         {/* CTA */}
         <div className="mt-10 text-center space-y-2">
-          <h2 className="text-center">Ready to simplify your URLs?</h2>
-          <SectionSubTitle text="Start creating short, effective links that drive engagement today." />
-          <div>
+          <h2 className="text-center" data-aos="fade-up">
+            Ready to simplify your URLs?
+          </h2>
+          <SectionSubTitle
+            data-aos="fade-up"
+            text="Start creating short, effective links that drive engagement today."
+          />
+          <div data-aos="fade-up">
             <BannerCTA />
           </div>
         </div>
