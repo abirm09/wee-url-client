@@ -9,15 +9,22 @@ import {
 import { Label } from "@/components/ui/label";
 import { LoginForm } from "@/features/auth";
 import DemoUserCredentialsCopy from "@/features/auth/login/DemoUserCredentialsCopy";
+import { TSearchParams } from "@/types";
 import { cookies } from "next/headers";
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
-const Page = async () => {
+const Page = async ({
+  searchParams,
+}: {
+  searchParams: Promise<TSearchParams>;
+}) => {
+  const { redirect_path } = await searchParams;
   const cookieStore = await cookies();
   const authCookie = cookieStore.get("_wee_url");
-  const callbackPath = "/"; //TODO: Implement callback url system
+  const callbackPath =
+    (Array.isArray(redirect_path) ? redirect_path[0] : redirect_path) || "/";
 
   if (authCookie) {
     redirect("/");

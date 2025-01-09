@@ -1,4 +1,4 @@
-type TApiSuccessResponse<D = null> = {
+type TApiSuccessResponse<D = unknown> = {
   success: true;
   statusCode: string;
   message: string;
@@ -10,13 +10,20 @@ type TApiErrorMessage = {
   message: string;
 };
 
-type TApiErrorResponse = {
-  status: number;
-  data: {
-    success: false;
-    message: string;
-    errorMessages: TApiErrorMessage[];
-  };
+type TApiErrorResponseData = {
+  success: false;
+  message: string;
+  errorMessages: TApiErrorMessage[];
 };
 
-export type { TApiErrorMessage, TApiErrorResponse, TApiSuccessResponse };
+type TApiErrorResponse = {
+  status: number;
+  data: TApiErrorResponseData;
+};
+
+export type {
+  TApiErrorMessage,
+  TApiErrorResponse,
+  TApiErrorResponseData,
+  TApiSuccessResponse,
+};

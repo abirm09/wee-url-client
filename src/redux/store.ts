@@ -11,9 +11,9 @@ import {
 } from "redux-persist";
 import baseApi from "./baseApi";
 import authReducer from "./features/auth/authSlice";
+import commonSlice from "./features/common/commonSlice";
 import userSlice from "./features/user/userSlice";
 import storage from "./storage";
-
 const persistConfig = {
   key: "auth",
   storage,
@@ -26,6 +26,7 @@ export const createStore = () => {
       [baseApi.reducerPath]: baseApi.reducer,
       auth: persistedAuthReducer,
       user: userSlice,
+      common: commonSlice,
     },
     middleware: (getDefaultMiddlewares) =>
       getDefaultMiddlewares({
