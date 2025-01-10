@@ -6,6 +6,7 @@ import {
 type TCommon = {
   selectedBellingPeriod?: TBillingType;
   selectedPlan?: TSubscriptionType;
+  paymentIntentId?: string | null;
 };
 
 type TCommonSlice = TCommon;
