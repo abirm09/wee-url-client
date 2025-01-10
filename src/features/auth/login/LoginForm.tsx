@@ -64,6 +64,7 @@ const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
     try {
       const res = await login(data).unwrap();
       const user = jwtDecode<TAuthUser>(res?.data?.token);
+      dispatch(setUser(res?.data?.profile));
       dispatch(
         setAuth({
           user,

@@ -1,17 +1,19 @@
 "use client";
 
 import { WeeButton } from "@/components";
+import { setCommon } from "@/redux/features/common/commonSlice";
 import {
   useCreateStripePaymentIntentMutation,
   useCreateSubscriptionReqMutation,
 } from "@/redux/features/subscription/subscriptionApi";
-import { useAppSelector } from "@/redux/hooks";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import {
   TApiErrorResponse,
   TApiSuccessResponse,
   TSubscriptionPlan,
 } from "@/types";
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
+import { useRouter } from "next/navigation";
 import { FormEvent, useState } from "react";
 import toast, { Toaster } from "react-hot-toast";
 import CardInfoCopy from "./CardInfoCopy";
@@ -22,13 +24,16 @@ const StripePaymentElement = ({
   subscriptionPlan?: TSubscriptionPlan[];
 }) => {
   const [loading, setLoading] = useState(false);
+  const dispatch = useAppDispatch();
   const { selectedBellingPeriod, selectedPlan } = useAppSelector(
     ({ common }) => common
   );
+  const router = useRouter();
   const stripe = useStripe();
   const elements = useElements();
   const [createSubReq] = useCreateSubscriptionReqMutation();
   const [createPaymentIntent] = useCreateStripePaymentIntentMutation();
+
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     setLoading(true);
     event.preventDefault();
@@ -105,9 +110,10 @@ const StripePaymentElement = ({
         });
 
       if (paymentIntent?.status === "succeeded") {
+        dispatch(setCommon({ paymentIntentId: paymentIntent?.id }));
+        router.push("/thank-you");
         toast.success("Subscription success");
       }
-
       if (confirmErr?.message) {
         toast.error(confirmErr?.message);
       }
@@ -144,7 +150,11 @@ const StripePaymentElement = ({
                 },
               }}
             />
-            <WeeButton className="w-full" loading={loading}>
+            <WeeButton
+              className="w-full"
+              loading={loading}
+              loadingClassName="w-full"
+            >
               Pay now
             </WeeButton>
           </form>

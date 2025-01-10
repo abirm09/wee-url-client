@@ -4,6 +4,7 @@ import { createSlice } from "@reduxjs/toolkit";
 const initialState: TCommonSlice = {
   selectedBellingPeriod: "monthly",
   selectedPlan: "free",
+  paymentIntentId: null,
 };
 
 const commonSlice = createSlice({
@@ -14,6 +15,7 @@ const commonSlice = createSlice({
       state.selectedBellingPeriod =
         payload.selectedBellingPeriod ?? state.selectedBellingPeriod;
       state.selectedPlan = payload.selectedPlan ?? state.selectedPlan;
+      state.paymentIntentId = payload.paymentIntentId ?? state.paymentIntentId;
     },
   },
 });
