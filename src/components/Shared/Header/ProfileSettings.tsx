@@ -85,7 +85,7 @@ const ProfileSettings = () => {
           <DropdownMenuSeparator />
           {/*  */}
           <DropdownMenuGroup>
-            <Link href={`/`}>
+            <Link href={`/dashboard`}>
               <DropdownMenuItem className="cursor-pointer">
                 Dashboard
                 <DropdownMenuShortcut>
