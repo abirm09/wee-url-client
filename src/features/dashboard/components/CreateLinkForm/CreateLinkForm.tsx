@@ -6,7 +6,7 @@ const CreateLinkForm = ({ allPlans }: { allPlans?: TSubscriptionPlan[] }) => {
   console.log(allPlans);
   return (
     <div>
-      <h2>Create link</h2>
+      <h2>hello</h2>
     </div>
   );
 };

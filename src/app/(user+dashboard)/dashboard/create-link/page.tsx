@@ -1,5 +1,5 @@
 import { Box } from "@/components";
-import { CreateLinkForm } from "@/features/dashboard/components";
+import CreateLinkClientWrapper from "@/features/dashboard/components/CreateLinkClientWrapper/CreateLinkClientWrapper";
 import useGetSubscriptionPlan from "@/hooks/useGetSubscriptionPlan";
 
 const CreateLink = async () => {
@@ -7,7 +7,7 @@ const CreateLink = async () => {
   return (
     <div className="mt-5">
       <Box className="shadow-sm">
-        <CreateLinkForm allPlans={allPlans} />
+        <CreateLinkClientWrapper allPlans={allPlans} />
       </Box>
     </div>
   );

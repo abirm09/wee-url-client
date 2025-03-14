@@ -23,10 +23,7 @@ const WeeButton = ({
   }
 
   return (
-    <Button
-      className={`${twMerge("text-primary-foreground hover:bg-primary-subtle active:scale-95 transition-all select-none", className)}`}
-      {...rest}
-    >
+    <Button className={`${twMerge("", className)}`} {...rest}>
       {children}
     </Button>
   );

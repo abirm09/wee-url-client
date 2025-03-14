@@ -16,7 +16,27 @@ const authApi = baseApi.injectEndpoints({
         body,
       }),
     }),
+    emailVerifyRequest: builder.mutation({
+      query: (body) => ({
+        url: "/auth/email-verify-request",
+        method: "POST",
+        body,
+      }),
+    }),
+    verifyOtp: builder.mutation({
+      query: (body) => ({
+        url: "/auth/verify-otp",
+        method: "POST",
+        body,
+      }),
+      invalidatesTags: ["profile"],
+    }),
   }),
 });
 
-export const { useLoginMutation, useLogOutMutation } = authApi;
+export const {
+  useLoginMutation,
+  useLogOutMutation,
+  useEmailVerifyRequestMutation,
+  useVerifyOtpMutation,
+} = authApi;
