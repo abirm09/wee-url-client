@@ -5,6 +5,7 @@ const initialState: TCommonSlice = {
   selectedBellingPeriod: "monthly",
   selectedPlan: "free",
   paymentIntentId: null,
+  subscriptionPlans: undefined,
 };
 
 const commonSlice = createSlice({
@@ -16,6 +17,8 @@ const commonSlice = createSlice({
         payload.selectedBellingPeriod ?? state.selectedBellingPeriod;
       state.selectedPlan = payload.selectedPlan ?? state.selectedPlan;
       state.paymentIntentId = payload.paymentIntentId ?? state.paymentIntentId;
+      state.subscriptionPlans =
+        payload.subscriptionPlans ?? state.subscriptionPlans;
     },
   },
 });

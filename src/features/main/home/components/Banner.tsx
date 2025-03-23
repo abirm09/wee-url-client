@@ -3,7 +3,7 @@ import BannerCTA from "./BannerCTA";
 
 const Banner = () => {
   return (
-    <section>
+    <section className="bg-secondary">
       <Container className="py-10 md:py-20 space-y-3">
         <h1
           className="text-2xl md:text-6xl font-bold text-center"

@@ -20,23 +20,26 @@ const Header = () => {
     <header className="py-4">
       <Container>
         <div className="flex justify-between items-center">
-          <div className="flex items-center justify-start gap-0 md:gap-2">
+          <div className="">
             <div>
               <Link href={`/`}>
                 <Image
                   src={`/logo/logo.png`}
                   alt="Logo"
-                  width={300}
-                  height={100}
-                  className="rounded-md w-8 md:w-10"
+                  width={175}
+                  height={35}
+                  className="w-[87.5px] h-[17.5px] lg:w-[175px] lg:h-[35px]"
+                  priority
                 />
               </Link>
             </div>
+          </div>
+          <div className="block lg:hidden">
             <Sheet>
               <SheetTrigger asChild>
                 <Button
                   variant="outline"
-                  className="hover:bg-secondary w-10 h-10 flex justify-center items-center transition-all rounded-md border-0 shadow-none"
+                  className="hover:bg-secondary w-10 h-10 flex justify-center items-center transition-all rounded-lg border-0 shadow-none"
                 >
                   <AlignJustify className="h-6 w-6" />
                 </Button>
@@ -53,7 +56,10 @@ const Header = () => {
               </SheetContent>
             </Sheet>
           </div>
-          <div>
+          <div className="hidden lg:flex gap-4">
+            <NavLinks className="flex-row" />
+          </div>
+          <div className="hidden lg:flex gap-4">
             <AuthStateForDesktop />
           </div>
         </div>

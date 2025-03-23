@@ -14,9 +14,9 @@ const Footer = () => {
             <Image
               src={`/logo/logo.jpg`}
               alt="logo"
-              width={200}
-              height={100}
-              className="rounded-md shadow-md w-auto h-auto"
+              width={175}
+              height={35}
+              className="rounded-md"
             />
             <p className="text-sm">
               WeeUrl is committed to providing a seamless and efficient URL

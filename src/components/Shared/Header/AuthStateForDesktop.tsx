@@ -1,5 +1,6 @@
 "use client";
 
+import WeeButton from "@/components/WeeButton/WeeButton";
 import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -10,11 +11,6 @@ const AuthStateForDesktop = () => {
 
   const { user: authUser } = useAppSelector(({ auth }) => auth);
 
-  const nonLoggedInUsersItems = [
-    { name: "Login", url: "login" },
-    { name: "Signup", url: "signup" },
-  ];
-
   useEffect(() => {
     setIsClient(true);
   }, []);
@@ -24,33 +20,33 @@ const AuthStateForDesktop = () => {
   }
 
   return (
-    <div>
+    <>
       {authUser ? (
         <>
           <ProfileSettings />
         </>
       ) : (
         <>
-          <div className="flex gap-2">
-            {nonLoggedInUsersItems.map((item, index) => (
-              <div key={item.url} className="flex gap-2 items-center">
-                <Link
-                  href={`/auth/${item.url}`}
-                  className="hover:bg-secondary px-3 py-2 rounded-md"
+          <ul className="flex gap-2">
+            <li>
+              <Link href={`/auth/login`}>
+                <WeeButton
+                  variant="link"
+                  className="text-base hover:no-underline text-black hover:text"
                 >
-                  {item.name}
-                </Link>
-                {index === nonLoggedInUsersItems.length - 1 ? null : (
-                  <>
-                    <span className={`w-px h-6 bg-gray-200 mt-px mx-3`}></span>
-                  </>
-                )}
-              </div>
-            ))}
-          </div>
+                  Login
+                </WeeButton>
+              </Link>
+            </li>
+            <li>
+              <Link href={`/auth/signup`}>
+                <WeeButton>Signup</WeeButton>
+              </Link>
+            </li>
+          </ul>
         </>
       )}
-    </div>
+    </>
   );
 };
 

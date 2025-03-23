@@ -135,7 +135,7 @@ const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
         )}
 
         {/* Forgot Password */}
-        <div className="text-right">
+        <div className="text-right font-semibold text-sm">
           <Link
             href="/auth/forget-password"
             className="text-primary underline text-sm"
@@ -168,8 +168,8 @@ const LoginForm = ({ callbackPath }: { callbackPath: string }) => {
       </form>
 
       {/* Register Section */}
-      <div className="flex justify-center mt-5">
-        <p>Don&apos;t have an account yet?</p>
+      <div className="flex justify-center mt-5 font-semibold text-sm">
+        <p className="text-gray-700">Don&apos;t have an account yet?</p>
         <Link href="/auth/signup" className="text-primary underline ml-1">
           Register now
         </Link>

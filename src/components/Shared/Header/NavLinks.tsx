@@ -1,6 +1,9 @@
 "use client";
 
+import { cn } from "@/lib/utils";
+import { useAppSelector } from "@/redux/hooks";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 const navLinks: { name: string; href: string }[] = [
   {
@@ -25,40 +28,61 @@ const navLinks: { name: string; href: string }[] = [
   },
 ];
 
-const NavLinks = () => {
+const NavLinks = ({ className }: { className?: string }) => {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  const { user: authUser } = useAppSelector(({ auth }) => auth);
+
+  if (!mounted) {
+    return null;
+  }
   return (
-    <div className="flex flex-col">
+    <ul className={`${cn("flex flex-col", className)}`}>
       {navLinks.map((item, index) => (
-        <Link
-          key={index}
-          className="py-2 hover:bg-secondary pl-5 rounded-md transition-all hover:text-primary-subtle text-gray-900"
-          href={item.href}
-        >
-          {item.name}
-        </Link>
-      ))}
-      <div className="flex md:hidden flex-col">
-        <hr />
-        {[
-          {
-            name: "Login",
-            href: "/auth/login",
-          },
-          {
-            name: "SignIn",
-            href: "/auth/signup",
-          },
-        ].map((item, index) => (
+        <li key={index}>
           <Link
-            key={index}
-            className="py-2 hover:bg-secondary pl-5 rounded-md transition-all hover:text-primary-subtle text-gray-900"
+            className="px-4 py-2 hover:text-primary inline-block transition-all"
             href={item.href}
           >
             {item.name}
           </Link>
-        ))}
-      </div>
-    </div>
+        </li>
+      ))}
+      {Object.keys(authUser || {}).length ? (
+        <>
+          <li className="block lg:hidden">
+            <Link
+              className="px-4 py-2 hover:text-primary inline-block transition-all"
+              href={"/dashboard"}
+            >
+              Dashboard
+            </Link>
+          </li>
+        </>
+      ) : (
+        <>
+          <li className="block lg:hidden">
+            <Link
+              className="px-4 py-2 hover:text-primary inline-block transition-all"
+              href={"/auth/login"}
+            >
+              Login
+            </Link>
+          </li>
+          <li className="block lg:hidden">
+            <Link
+              className="px-4 py-2 hover:text-primary inline-block transition-all"
+              href={"/auth/signup"}
+            >
+              Signup
+            </Link>
+          </li>
+        </>
+      )}
+    </ul>
   );
 };
 

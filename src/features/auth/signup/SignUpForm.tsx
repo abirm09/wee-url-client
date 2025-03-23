@@ -90,7 +90,7 @@ const SignUpForm = () => {
     <>
       <div className="max-w-md mx-auto ">
         <div>
-          <h3 className="text-2xl font-semibold text-primary bg-info-subtle text-center">
+          <h3 className="text-2xl font-semibold text-primary bg-info-subtle text-center mt-2">
             Hello again!
           </h3>
           <p className="text-center text-sm">
@@ -187,7 +187,7 @@ const SignUpForm = () => {
             Register
           </WeeButton>
         </form>
-        <div className="flex gap-2 justify-center mt-5">
+        <div className="flex gap-2 justify-center mt-5 font-semibold text-sm">
           <p className="text-gray-700">Already have an account?</p>
           <Link
             href={`/auth/login`}
