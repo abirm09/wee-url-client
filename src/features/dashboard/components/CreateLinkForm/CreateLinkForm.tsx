@@ -3,6 +3,7 @@
 import { TSubscriptionPlan } from "@/types";
 
 const CreateLinkForm = ({ allPlans }: { allPlans?: TSubscriptionPlan[] }) => {
+  // eslint-disable-next-line no-console
   console.log(allPlans);
   return (
     <div>
