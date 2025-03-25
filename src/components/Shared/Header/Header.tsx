@@ -17,9 +17,9 @@ import NavLinks from "./NavLinks";
 
 const Header = () => {
   return (
-    <header className="py-4">
+    <header>
       <Container>
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center py-4">
           <div className="">
             <div>
               <Link href={`/`}>
@@ -63,7 +63,7 @@ const Header = () => {
             <AuthStateForDesktop />
           </div>
         </div>
-        <hr className="mt-4" />
+        <hr />
       </Container>
     </header>
   );
