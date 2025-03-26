@@ -25,6 +25,7 @@ const Clients = () => {
                 alt={`Logo ${index + 1}`}
                 width={48}
                 height={48}
+                className="w-auto h-auto"
               />
             ))}
           </div>
