@@ -8,13 +8,18 @@ import {
   Container,
 } from "@/components";
 
+import AnalyticsIcon from "@/assets/images/others/analytics.svg";
+import EditIcon from "@/assets/images/others/edit.svg";
+import FlowChartIcon from "@/assets/images/others/flowchart.svg";
 import { SectionSubTitle, SectionTitle } from "@/components/Shared/Title/Title";
+import { ReactNode } from "react";
 import BannerCTA from "./BannerCTA";
 
 type TCardData = {
   id: number;
   title: string;
   desc: string;
+  icon: ReactNode;
 };
 
 const cardData: TCardData[] = [
@@ -22,16 +27,19 @@ const cardData: TCardData[] = [
     id: 1,
     title: "Custom Short Links",
     desc: "Tailor your shortened links to reflect your brand, making them easy to remember and share.",
+    icon: <EditIcon className="w-8 h-8 ms-2" />,
   },
   {
     id: 2,
     title: "Advanced Analytics",
     desc: "Gain insights into your link performance with real-time click tracking and audience demographics.",
+    icon: <AnalyticsIcon className="w-8 h-8 ms-2" />,
   },
   {
     id: 3,
     title: "Seamless Integration",
     desc: "Easily integrate with your favorite tools like social media, CRM platforms, and more.",
+    icon: <FlowChartIcon className="w-8 h-8 ms-2" />,
   },
 ];
 
@@ -50,11 +58,14 @@ const About = () => {
           {cardData.map((item, index) => (
             <Card
               key={item.id}
-              className="w-96"
+              className="w-96 border-none shadow-none space-y-2"
               data-aos-delay={`${index * 300}`}
               data-aos="fade-up"
             >
               <CardHeader>
+                <div className="w-12 h-12 grid justify-start items-center bg-secondary rounded-s-xl rounded-b-xl">
+                  {item.icon}
+                </div>
                 <CardTitle>{item.title}</CardTitle>
                 <CardDescription>{item.desc}</CardDescription>
               </CardHeader>
