@@ -1,5 +1,6 @@
 "use client";
 
+import { cn } from "@/lib/utils";
 import {
   animate,
   motion,
@@ -10,14 +11,16 @@ import {
 import { useEffect } from "react";
 import { useInView } from "react-intersection-observer";
 
-const Counter = ({
+const CounterAnim = ({
   from = 0,
   to = 100,
   duration = 2,
+  className,
 }: {
   from?: number;
   to: number;
   duration?: number;
+  className?: string;
 }) => {
   const controls = useAnimation();
   const { ref, inView } = useInView({ triggerOnce: true });
@@ -39,9 +42,9 @@ const Counter = ({
 
   return (
     <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={controls}>
-      <motion.span>{rounded}</motion.span>
+      <motion.span className={cn(className)}>{rounded}</motion.span>
     </motion.div>
   );
 };
 
-export default Counter;
+export default CounterAnim;
