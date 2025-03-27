@@ -3,7 +3,6 @@
 import {
   Breadcrumb,
   BreadcrumbItem,
-  BreadcrumbLink,
   BreadcrumbList,
   BreadcrumbSeparator,
 } from "@/components";
@@ -17,7 +16,7 @@ const BreadcrumbDashboard = () => {
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem>
-          <BreadcrumbLink href="/">Home</BreadcrumbLink>
+          <Link href="/">Home</Link>
         </BreadcrumbItem>
         <BreadcrumbSeparator />
         {pathNames.map((item, index) => (
