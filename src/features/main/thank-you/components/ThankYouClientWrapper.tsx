@@ -1,11 +1,10 @@
 "use client";
 
-import fireworks from "@/assets/images/svg/fireworks.svg";
+import FireworksIco from "@/assets/images/others/fireworks.svg";
 import { Confetti, ConfettiRef } from "@/components";
 import SparklesText from "@/components/ui/sparkles-text";
 import { useAppSelector } from "@/redux/hooks";
 import { Check } from "lucide-react";
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
@@ -58,7 +57,7 @@ const ThankYouClientWrapper = () => {
           </Link>{" "}
           {selectedPlan} family.
         </p>
-        <Image src={fireworks} alt="Fireworks" />
+        <FireworksIco />
       </div>
       {showConfetti ? (
         <Confetti ref={confettiRef} className="fixed w-full h-full" />

@@ -37,7 +37,7 @@ const Banner = () => {
                 <BannerCTA />
               </div>
               <div className="hidden lg:flex justify-center">
-                <URLShorter className="w-96" />
+                <URLShorter className="w-96 h-96" />
               </div>
             </CarouselItem>
             <CarouselItem className="grid grid-cols-2 w-full items-center">
@@ -51,7 +51,7 @@ const Banner = () => {
                 <BannerCTA />
               </div>
               <div className="hidden lg:flex justify-center">
-                <URLTrend className="w-96" />
+                <URLTrend className="w-96 h-96" />
               </div>
             </CarouselItem>
             <CarouselItem className="grid grid-cols-2 w-full items-center">
@@ -66,7 +66,7 @@ const Banner = () => {
                 <BannerCTA />
               </div>
               <div className="hidden lg:flex justify-center">
-                <DocumentAnalytics className="w-96" />
+                <DocumentAnalytics className="w-96 h-96" />
               </div>
             </CarouselItem>
           </CarouselContent>

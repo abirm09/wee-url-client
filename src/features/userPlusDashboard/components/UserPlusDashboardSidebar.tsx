@@ -10,7 +10,6 @@ import {
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
-import { Icons } from "@/icons";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
@@ -20,6 +19,12 @@ import {
   CollapsibleContent,
   CollapsibleTrigger,
 } from "../../../components/ui/collapsible";
+
+import AddIco from "@/assets/images/dashboard/add.svg";
+import AnalyticsIco from "@/assets/images/dashboard/analytics.svg";
+import PasswordIco from "@/assets/images/dashboard/password.svg";
+import UserIco from "@/assets/images/dashboard/user.svg";
+import ListViewIco from "@/assets/images/dashboard/view-list.svg";
 
 const UserPlusDashboardSidebar = () => {
   const applicationLinks: {
@@ -35,7 +40,7 @@ const UserPlusDashboardSidebar = () => {
     {
       name: "Metrics",
       path: "/dashboard",
-      icon: <Icons.Dashboard />,
+      icon: <AnalyticsIco />,
     },
     {
       name: "Account",
@@ -43,12 +48,12 @@ const UserPlusDashboardSidebar = () => {
         {
           name: "Profile",
           path: "/user",
-          icon: <Icons.User />,
+          icon: <UserIco />,
         },
         {
           name: "Change password",
           path: "/user/change-password",
-          icon: <Icons.Password />,
+          icon: <PasswordIco />,
         },
       ],
     },
@@ -58,12 +63,12 @@ const UserPlusDashboardSidebar = () => {
         {
           name: "Create new",
           path: "/dashboard/create-link",
-          icon: <Icons.AddCircle />,
+          icon: <AddIco />,
         },
         {
           name: "View All",
           path: "/dashboard/view-links",
-          icon: <Icons.ViewGrid />,
+          icon: <ListViewIco />,
         },
       ],
     },
@@ -71,22 +76,16 @@ const UserPlusDashboardSidebar = () => {
 
   return (
     <Sidebar>
-      <SidebarHeader>
-        <Link
-          href={"/"}
-          className="py-2 flex justify-center items-center gap-2"
-        >
+      <SidebarHeader className="flex items-center justify-center py-5">
+        <Link href={"/dashboard"}>
           <Image
             src={`/logo/logo.png`}
             alt="Logo"
-            height={100}
-            width={100}
-            className="w-10"
+            width={175}
+            height={35}
+            className="w-[87.5px] h-[17.5px] lg:w-[175px] lg:h-[35px]"
+            priority
           />
-          <div>
-            <h2 className="font-bold">WeeURL</h2>
-            <p className="text-sm">Shorten your URL</p>
-          </div>
         </Link>
       </SidebarHeader>
       <SidebarContent>
