@@ -1,6 +1,6 @@
 import Clients from "@/features/main/clients/Clients";
 import { About, Banner } from "@/features/main/home/components";
-import { Pricing } from "@/features/main/pricing/components";
+import Security from "@/features/main/home/components/Security";
 
 const page = async () => {
   return (
@@ -8,7 +8,7 @@ const page = async () => {
       <Banner />
       <Clients />
       <About />
-      <Pricing />
+      <Security />
     </>
   );
 };
