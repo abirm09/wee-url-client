@@ -37,8 +37,8 @@ const cardData: TCardData[] = [
 
 const About = () => {
   return (
-    <section className="bg-secondary">
-      <Container className="py-10 md:py-20">
+    <section>
+      <Container className="pt-10 md:pt-20">
         <SectionTitle text="ABOUT" />
         <p
           className="text-gray-600 text-center text-xs md:text-base"

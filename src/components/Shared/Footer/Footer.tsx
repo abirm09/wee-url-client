@@ -1,4 +1,3 @@
-import stripePaymentImage from "@/assets/images/stripe-payment.png";
 import Container from "@/components/Container/Container";
 import { DropdownMenuSeparator } from "@/components/ui";
 import Image from "next/image";
@@ -11,13 +10,6 @@ const Footer = () => {
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
           <div className="space-y-3">
-            <Image
-              src={`/logo/logo.jpg`}
-              alt="logo"
-              width={175}
-              height={35}
-              className="rounded-md"
-            />
             <p className="text-sm">
               WeeUrl is committed to providing a seamless and efficient URL
               shortening experience. Simplify your links and track their
@@ -45,11 +37,11 @@ const Footer = () => {
           <div>
             <p className="font-bold text-lg">Payment partner</p>
             <Image
-              src={stripePaymentImage.src}
+              src={"/images/others/stripe-payment.png"}
               alt="Stripe payment url"
-              width={300}
-              height={100}
-              className="rounded-md mt-3 w-auto h-auto"
+              width={344}
+              height={127.6}
+              className="rounded-md mt-3 w-[215px] h-[79.75px] lg:w-[344px] lg:h-[127.6px]"
             />
           </div>
         </div>

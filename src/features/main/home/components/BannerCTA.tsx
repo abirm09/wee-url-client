@@ -20,8 +20,11 @@ const BannerCTA = () => {
 
   return (
     <>
-      <Link href={`${user ? "/dashboard" : "/auth/signup"}`}>
-        <WeeButton>
+      <Link
+        href={`${user ? "/dashboard" : "/auth/signup"}`}
+        className="inline-block"
+      >
+        <WeeButton className="text-xs md:text-base">
           {user ? <>Shorten Now</> : <>Try for free</>}
           <MoveRight />
         </WeeButton>
