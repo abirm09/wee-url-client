@@ -62,12 +62,12 @@ const UserPlusDashboardSidebar = () => {
       children: [
         {
           name: "Create new",
-          path: "/dashboard/create-link",
+          path: "/dashboard/links/create",
           icon: <AddIco />,
         },
         {
           name: "View All",
-          path: "/dashboard/view-links",
+          path: "/dashboard/links",
           icon: <ListViewIco />,
         },
       ],
