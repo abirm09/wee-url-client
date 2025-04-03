@@ -6,6 +6,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import { cookies } from "next/headers";
 import React from "react";
+import { Toaster } from "react-hot-toast";
 import "../styles/tailwind.css";
 
 const inter = Inter({
@@ -29,7 +30,10 @@ export default async function RootLayout({
     <StoreProvider>
       <html lang="en">
         <InitGoogleTagManager />
-        <body className={`${inter.className} antialiased`}>{children}</body>
+        <body className={`${inter.className} antialiased`}>
+          {children}
+          <Toaster position="top-center" reverseOrder={false} />
+        </body>
       </html>
       <GetProfile isAuthenticated={!!authCookie} />
       <AOSInit />

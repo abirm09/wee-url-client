@@ -1,3 +1,5 @@
+import { TSubscription } from "../Subscription/Subscription";
+
 type TUserRole = "customer" | "admin" | "superAdmin";
 
 type TUserStatus = "active" | "banned" | "pendingDelete";
@@ -37,6 +39,7 @@ type TUser = {
   permissions?: TUserPermission[];
   profile?: TUserProfile;
   loggedInDevices?: TLoggedInDevice[];
+  subscriptions: TSubscription[];
 };
 
 type TUserSlice = {

@@ -10,12 +10,14 @@ const CreateLinkClientWrapper = ({
 }: {
   allPlans?: TSubscriptionPlan[];
 }) => {
-  const { user } = useAppSelector(({ user }) => user);
+  const { user, isUserLoading } = useAppSelector(({ user }) => user);
+
+  if (isUserLoading) return null;
 
   return (
     <div>
       {user?.isEmailVerified === true ? (
-        <CreateLinkForm allPlans={allPlans} />
+        <CreateLinkForm allPlans={allPlans} user={user} />
       ) : (
         <VerifyEmail />
       )}
