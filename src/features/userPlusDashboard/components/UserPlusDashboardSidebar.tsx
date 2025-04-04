@@ -9,6 +9,7 @@ import {
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
+  SidebarSeparator,
 } from "@/components/ui/sidebar";
 import { ChevronDown } from "lucide-react";
 import Image from "next/image";
@@ -25,6 +26,7 @@ import AnalyticsIco from "@/assets/images/dashboard/analytics.svg";
 import PasswordIco from "@/assets/images/dashboard/password.svg";
 import UserIco from "@/assets/images/dashboard/user.svg";
 import ListViewIco from "@/assets/images/dashboard/view-list.svg";
+import AuthStateForDesktop from "@/components/Shared/Header/AuthStateForDesktop";
 
 const UserPlusDashboardSidebar = () => {
   const applicationLinks: {
@@ -62,12 +64,12 @@ const UserPlusDashboardSidebar = () => {
       children: [
         {
           name: "Create new",
-          path: "/dashboard/links/create",
+          path: "/dashboard/urls/create",
           icon: <AddIco />,
         },
         {
           name: "View All",
-          path: "/dashboard/links",
+          path: "/dashboard/urls",
           icon: <ListViewIco />,
         },
       ],
@@ -142,8 +144,9 @@ const UserPlusDashboardSidebar = () => {
           })}
         </SidebarGroup>
       </SidebarContent>
-      <SidebarFooter>
-        <h2>Hello</h2>
+      <SidebarFooter className="flex justify-center">
+        <SidebarSeparator />
+        <AuthStateForDesktop />
       </SidebarFooter>
     </Sidebar>
   );

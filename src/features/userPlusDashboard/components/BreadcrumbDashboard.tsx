@@ -26,7 +26,9 @@ const BreadcrumbDashboard = () => {
                 href={`/${pathNames.slice(0, index + 1).join("/")}`}
                 className="capitalize"
               >
-                {item.split("-").join(" ")}
+                {item.split("-").join(" ").length > 12
+                  ? item.split("-").join(" ").slice(0, 12) + "..."
+                  : item.split("-").join(" ")}
               </Link>
             </BreadcrumbItem>
             {index < pathNames.length - 1 && <BreadcrumbSeparator />}

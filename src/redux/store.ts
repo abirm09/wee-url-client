@@ -12,6 +12,7 @@ import {
 import baseApi from "./baseApi";
 import authReducer from "./features/auth/authSlice";
 import commonSlice from "./features/common/commonSlice";
+import urlSlice from "./features/url/urlSlice";
 import userSlice from "./features/user/userSlice";
 import storage from "./storage";
 const persistConfig = {
@@ -27,6 +28,7 @@ export const createStore = () => {
       auth: persistedAuthReducer,
       user: userSlice,
       common: commonSlice,
+      urls: urlSlice,
     },
     middleware: (getDefaultMiddlewares) =>
       getDefaultMiddlewares({

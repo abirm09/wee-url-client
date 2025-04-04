@@ -5,3 +5,12 @@
 .error-message {
   @apply text-red-600 font-semibold text-sm pt-1;
 }
+
+.shadow-box {
+  border-radius: 10px;
+  border: 1px solid transparent;
+  transition: all 0.3s ease;
+  box-shadow:
+    0 1px 3px 0 rgba(0, 0, 0, 0.1),
+    0 1px 2px -1px rgba(0, 0, 0, 0.1);
+}

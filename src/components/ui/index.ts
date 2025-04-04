@@ -20,5 +20,6 @@ export * from "./sheet";
 export * from "./sidebar";
 export * from "./skeleton";
 export * from "./sparkles-text";
+export * from "./table";
 export * from "./tabs";
 export * from "./tooltip";

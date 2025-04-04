@@ -39,7 +39,7 @@ const ProfileSettings = () => {
     }
   };
   return (
-    <div>
+    <div className="flex justify-center">
       <DropdownMenu>
         <DropdownMenuTrigger asChild>
           <Avatar>
@@ -65,7 +65,7 @@ const ProfileSettings = () => {
           <DropdownMenuSeparator />
           {/*  */}
           <DropdownMenuGroup>
-            <Link href={`/`}>
+            <Link href={`/user`}>
               <DropdownMenuItem className="cursor-pointer">
                 Profile
                 <DropdownMenuShortcut>

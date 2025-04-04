@@ -9,7 +9,11 @@ const Box = ({
   children: React.ReactNode;
   className?: string;
 }) => {
-  return <Card className={`${cn("p-5", className)}`}>{children}</Card>;
+  return (
+    <Card className={`${cn("p-5 shadow-box border ", className)}`}>
+      {children}
+    </Card>
+  );
 };
 
 export default Box;
