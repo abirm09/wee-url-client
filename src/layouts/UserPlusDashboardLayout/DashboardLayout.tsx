@@ -12,9 +12,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
       <main className="w-full">
         <SidebarProvider>
           <UserPlusDashboardSidebar />
-          <div className="px-2 w-full">
+          <div className="w-full bg-gray-50">
             <TopHeaderDashboard />
-            {children}
+            <div className="px-5 w-full mt-5">{children}</div>
           </div>
         </SidebarProvider>
       </main>
@@ -23,3 +23,9 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
 };
 
 export default DashboardLayout;
+
+// box-shadow: 0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);
+
+// Tailwind CSS equivalent for the given box-shadow
+// shadow-md corresponds to the provided box-shadow values
+// You can use this class in your JSX elements where needed

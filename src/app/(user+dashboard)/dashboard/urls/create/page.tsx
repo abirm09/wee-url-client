@@ -7,7 +7,7 @@ const CreateLink = async () => {
 
   return (
     <div className="mt-5">
-      <Box className="shadow-sm">
+      <Box>
         <CreateLinkClientWrapper allPlans={allPlans} />
       </Box>
     </div>
