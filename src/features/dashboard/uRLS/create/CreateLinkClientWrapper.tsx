@@ -1,9 +1,8 @@
 "use client";
-
 import { useAppSelector } from "@/redux/hooks";
 import { TSubscriptionPlan } from "@/types";
-import CreateLinkForm from "../CreateLinkForm/CreateLinkForm";
-import VerifyEmail from "../VerifyEmail/VerifyEmail";
+import VerifyEmail from "../../VerifyEmail/VerifyEmail";
+import CreateLinkForm from "./CreateLinkForm";
 
 const CreateLinkClientWrapper = ({
   allPlans,

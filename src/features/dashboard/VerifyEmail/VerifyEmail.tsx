@@ -1,3 +1,5 @@
+"use client";
+
 import { InputOTP, InputOTPGroup, InputOTPSlot, WeeButton } from "@/components";
 import CommonModal from "@/components/CommonModel/CommonModal";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
