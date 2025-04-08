@@ -16,6 +16,7 @@ const initialState: TURLSlice = {
     totalPage: 0,
     total: 0,
   },
+  tags: null,
 };
 
 const uRLSlice = createSlice({
@@ -39,6 +40,9 @@ const uRLSlice = createSlice({
     },
     setAllUrlMeta: (state, { payload }: PayloadAction<TMeta>) => {
       state.meta = { ...state.meta, ...payload };
+    },
+    setURLTags: (state, { payload }: PayloadAction<string[]>) => {
+      state.tags = payload;
     },
   },
 });

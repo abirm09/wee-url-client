@@ -7,6 +7,7 @@ type TURLSlice = {
   isError: boolean;
   searchParams?: TApiSearchParams;
   meta?: TMeta;
+  tags?: string[] | null;
 };
 
 type T_URLCount = { urlMetrics: number };

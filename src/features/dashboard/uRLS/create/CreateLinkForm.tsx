@@ -21,7 +21,10 @@ import {
 } from "@/components";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
 import { cn } from "@/lib/utils";
-import { useCreateUrlMutation } from "@/redux/features/url/urlApi";
+import {
+  useAllTagsForCustomerQuery,
+  useCreateUrlMutation,
+} from "@/redux/features/url/urlApi";
 import {
   TApiErrorMessage,
   TApiErrorResponse,
@@ -34,13 +37,15 @@ import { CalendarIcon } from "lucide-react";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
+import { MultiValue } from "react-select";
+import Creatable from "react-select/creatable";
 import { z } from "zod";
 
 const formSchema = z.object({
   fullUrl: z.string().min(5, "Full url must be at least 5 characters"),
   shortCode: z.string().optional(),
   expiresAt: z.string().optional(),
-  tags: z.string().optional(),
+  tags: z.string().array().optional(),
   password: z.string().optional(),
 });
 
@@ -51,6 +56,17 @@ const CreateLinkForm = ({
   allPlans?: TSubscriptionPlan[];
   user: TUser;
 }) => {
+  const { data: prevTagsRes } = useAllTagsForCustomerQuery({});
+  const prevTagsData = (prevTagsRes?.data?.tags || []) as string[];
+
+  const creatableOptions = prevTagsData?.map((item) => ({
+    value: item,
+    label: item,
+  }));
+  const [selectedTags, setSelectedTags] = useState<
+    MultiValue<{ value: string; label: string }>
+  >([]);
+
   const usersSubscribedPlan = allPlans?.find(
     (item) => item.type === user?.subscriptions![0]?.plan?.type
   );
@@ -76,9 +92,13 @@ const CreateLinkForm = ({
   function resetForm() {
     form.reset();
     setExpiresAt(undefined);
+    setSelectedTags([]);
   }
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setErrors(null);
+
+    values.tags = selectedTags.map((item) => item.value);
+
     values.expiresAt = expiresAt?.toISOString();
     try {
       await createNewURL({ url: values }).unwrap();
@@ -182,6 +202,29 @@ const CreateLinkForm = ({
                         />
                       </PopoverContent>
                     </Popover>
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+          </div>
+          <div>
+            <FormField
+              control={form?.control}
+              name="tags"
+              render={() => (
+                <FormItem>
+                  <FormLabel>Tags</FormLabel>
+                  <FormControl>
+                    <Creatable
+                      isMulti={true}
+                      isSearchable={true}
+                      isClearable={true}
+                      options={creatableOptions}
+                      value={selectedTags}
+                      onChange={(v) => setSelectedTags(v)}
+                      className="rounded-md shadow-sm"
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
