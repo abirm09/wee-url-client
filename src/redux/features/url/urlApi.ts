@@ -1,4 +1,6 @@
+import { SearchParams } from "@/lib";
 import baseApi from "@/redux/baseApi";
+import { TApiSearchParams } from "@/types";
 
 const urlApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -11,7 +13,10 @@ const urlApi = baseApi.injectEndpoints({
       invalidatesTags: ["url"],
     }),
     allURLCustomer: builder.query({
-      query: () => `/url/customer`,
+      query: (searchParams: TApiSearchParams) => ({
+        url: "/url/customer",
+        params: SearchParams(searchParams),
+      }),
       providesTags: () => ["url"],
     }),
     allTagsForCustomer: builder.query({

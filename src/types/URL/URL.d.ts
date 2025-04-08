@@ -1,7 +1,12 @@
+import { TApiSearchParams } from "../ApiSearchParams/apiSearchParams";
+import { TMeta } from "../Meta/Meta";
+
 type TURLSlice = {
   data: TURL[] | null;
   isLoading: boolean;
   isError: boolean;
+  searchParams?: TApiSearchParams;
+  meta?: TMeta;
 };
 
 type T_URLCount = { urlMetrics: number };

@@ -1,10 +1,21 @@
-import { TURL, TURLSlice } from "@/types";
+import { TApiSearchParams, TMeta, TURL, TURLSlice } from "@/types";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: TURLSlice = {
   data: null,
   isLoading: true,
   isError: false,
+  searchParams: {
+    page: 1,
+    limit: 10,
+    sort: "-createdAt",
+  },
+  meta: {
+    limit: 0,
+    page: 0,
+    totalPage: 0,
+    total: 0,
+  },
 };
 
 const uRLSlice = createSlice({
@@ -20,9 +31,24 @@ const uRLSlice = createSlice({
     setURLError: (state, { payload }: PayloadAction<boolean>) => {
       state.isError = payload;
     },
+    setAllUrlSearchParams: (
+      state,
+      { payload }: PayloadAction<TApiSearchParams>
+    ) => {
+      state.searchParams = { ...state.searchParams, ...payload };
+    },
+    setAllUrlMeta: (state, { payload }: PayloadAction<TMeta>) => {
+      state.meta = { ...state.meta, ...payload };
+    },
   },
 });
 
-export const { setURL, setURLLoading, setURLError } = uRLSlice.actions;
+export const {
+  setURL,
+  setURLLoading,
+  setURLError,
+  setAllUrlMeta,
+  setAllUrlSearchParams,
+} = uRLSlice.actions;
 
 export default uRLSlice.reducer;
