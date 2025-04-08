@@ -1,7 +1,7 @@
 type TMeta = {
   limit: number;
   page: number;
-  totalPages: number;
+  totalPage: number;
   total: number;
 };
 

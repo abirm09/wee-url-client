@@ -1,7 +1,10 @@
+import { TMeta } from "../Meta/Meta";
+
 type TApiSuccessResponse<D = unknown> = {
   success: true;
   statusCode: string;
   message: string;
+  meta?: TMeta;
   data: D;
 };
 
