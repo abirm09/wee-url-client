@@ -3,23 +3,23 @@ import { NextRequest } from "next/server";
 
 export async function middleware(request: NextRequest) {
   const accessToken = request.cookies.get("_wee_url")?.value || null;
-
+  const requestedPath = request.nextUrl.pathname;
   // If non-logged in user tries to access dashboard, redirect to login page
   if (
-    request.nextUrl.pathname === "/dashboard" ||
-    request.nextUrl.pathname === "/user"
+    requestedPath.startsWith("/dashboard") ||
+    requestedPath.startsWith("/user")
   ) {
     if (!accessToken) {
       return Response.redirect(
-        new URL("/auth/login?redirect_path=/dashboard", request.url)
+        new URL(`/auth/login?redirect_path=${requestedPath}`, request.url)
       );
     }
   }
 
   // If logged in user tries to access login or signup page, redirect to dashboard
   if (
-    request.nextUrl.pathname === "/auth/login" ||
-    request.nextUrl.pathname === "/auth/signup"
+    requestedPath.startsWith("/auth/login") ||
+    requestedPath.startsWith("/auth/signup")
   ) {
     if (accessToken) {
       return Response.redirect(new URL("/dashboard", request.url));
