@@ -6,7 +6,7 @@ type TApiSearchParams = {
   filter?: string;
   shortCode?: string;
   tags?: string | string[];
-  [key: string]: string | number | boolean | undefined;
+  [key: string]: string | string[] | number | boolean | undefined;
 };
 
 export type { TApiSearchParams };
