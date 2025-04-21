@@ -80,14 +80,14 @@ WeeURL is a secure, fast, scalable, and production-ready client app for shorteni
   - NodeJS v18 or later
   - yarn install
   - Stripe credentials
-  - [WeeURL server](https://github.com/abirm09/wee-url-client)
+  - [WeeURL server](https://github.com/abirm09/wee-url-server)
 
 - ## Installation
 
   Clone the project:
 
   ```bash
-  git clone https://github.com/abirm09/wee-url-server.git
+  git clone https://github.com/abirm09/wee-url-client.git
   ```
 
   Install dependencies:
@@ -102,8 +102,8 @@ WeeURL is a secure, fast, scalable, and production-ready client app for shorteni
 
   ```bash
   cp .env.local.example .env.local
-  # Copy .env.example to .env and configure the environment variables.
-  # Follow further instructions mentioned on .env.example file. Add all variables properly.
+  # Copy .env.local.example to .env.local and configure the environment variables.
+  # Follow further instructions mentioned on .env.local.example file. Add all variables properly.
   ```
 
 - ## Running the App
