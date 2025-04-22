@@ -4,10 +4,11 @@ import { WeeButton } from "@/components";
 import { useAllTagsForCustomerQuery } from "@/redux/features/url/urlApi";
 import { setAllUrlSearchParams } from "@/redux/features/url/urlSlice";
 import { useAppDispatch } from "@/redux/hooks";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Select, { MultiValue } from "react-select";
 
 const AllURLFilterByTags = () => {
+  const [mounted, setMounted] = useState(false);
   const { data: prevTagsRes } = useAllTagsForCustomerQuery({});
   const prevTagsData = (prevTagsRes?.data?.tags || []) as string[];
 
@@ -20,6 +21,12 @@ const AllURLFilterByTags = () => {
   >([]);
 
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  if (!mounted) return;
 
   return (
     <div className="flex-1 max-w-2xl flex justify-between gap-2">

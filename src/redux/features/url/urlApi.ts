@@ -14,11 +14,20 @@ const urlApi = baseApi.injectEndpoints({
     }),
     allURLCustomer: builder.query({
       query: (searchParams: TApiSearchParams) => ({
-        url: "/url/customer",
+        url: `/url/customer/`,
         params: SearchParams(searchParams),
       }),
       providesTags: () => ["url"],
     }),
+    singleURLCustomer: builder.query({
+      query: (p: { searchParams?: TApiSearchParams; id: string }) => {
+        return {
+          url: `/url/customer/${p.id}`,
+        };
+      },
+      providesTags: () => ["url"],
+    }),
+
     allTagsForCustomer: builder.query({
       query: () => `/url/tags/customer`,
       providesTags: () => ["url"],
@@ -30,4 +39,5 @@ export const {
   useCreateUrlMutation,
   useAllTagsForCustomerQuery,
   useAllURLCustomerQuery,
+  useSingleURLCustomerQuery,
 } = urlApi;
